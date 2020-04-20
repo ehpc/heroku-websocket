@@ -1,6 +1,10 @@
 const express = require('express');
 const { Server: WebSocketServer } = require('ws');
 
+const logger = console;
+
+// Express magic
+
 const app = express();
 
 app.set('view engine', 'hbs');
@@ -11,17 +15,18 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+const server = app.listen(PORT, () => logger.log(`Listening on ${PORT}`));
+
+// WebSocket magic
 
 const wss = new WebSocketServer({ server });
 
 wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
-});
-
-setInterval(() => {
-  wss.clients.forEach((client) => {
-    client.send(new Date().toTimeString());
+  logger.log('Client connected');
+  ws.on('message', (message) => {
+    wss.clients.forEach((client) => {
+      client.send(message);
+    });
   });
-}, 1000);
+  ws.on('close', () => logger.log('Client disconnected'));
+});
