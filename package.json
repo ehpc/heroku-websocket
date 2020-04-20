@@ -1,0 +1,33 @@
+{
+  "name": "heroku-websocket",
+  "version": "1.0.0",
+  "description": "Example WebSocket application for Heroku",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehpc/heroku-websocket.git"
+  },
+  "keywords": [
+    "heroku",
+    "websocket"
+  ],
+  "author": "ehpc@ehpc.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ehpc/heroku-websocket/issues"
+  },
+  "homepage": "https://github.com/ehpc/heroku-websocket#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "ws": "^7.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}
