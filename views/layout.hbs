@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Чат</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  {{#if username}}
+  <script type="module" defer src="/chat.js"></script>
+  {{else}}
+  <script defer src="/auth.js"></script>
+  {{/if}}
+</head>
+
+<body>
+  <div class="container">
+    <ul class="nav">
+      {{#if username}}
+      <li class="nav-item">
+        <a class="nav-link" href="/chat">Чат</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signout">Выйти</a>
+      </li>
+      {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="/signin">Войти</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Зарегистрироваться</a>
+      </li>
+      {{/if}}
+    </ul>
+    <div class="container-fluid">
+      {{{body}}}
+    </div>
+  </div>
+</body>
+
+</html>
