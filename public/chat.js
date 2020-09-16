@@ -1,5 +1,8 @@
 import { getAvatar } from './utils.js';
 
+/**
+ * Веб-компонент сообщения чата
+ */
 class ChatMessageElement extends HTMLElement {
   constructor() {
     super();
@@ -9,6 +12,11 @@ class ChatMessageElement extends HTMLElement {
       .appendChild(templateContent.cloneNode(true));
   }
 
+  /**
+   * Создаёт элемент сообщения в чате
+   * @param {string} username Имя пользователя
+   * @param {string} message Сообщение
+   */
   static async createElement(username, message) {
     const chatMessage = document.createElement('chat-message');
     const avatarImage = await getAvatar(username);
@@ -20,10 +28,12 @@ class ChatMessageElement extends HTMLElement {
     return chatMessage;
   }
 }
+// Регистрируем веб-компонент чата
 customElements.define('chat-message', ChatMessageElement);
 
 const chat = document.getElementById('chat');
 
+// Навешиваем обработчик отправки формы с сообщением
 document.forms['send-form'].addEventListener('submit', async (event) => {
   event.preventDefault();
   chat.appendChild(await ChatMessageElement.createElement());

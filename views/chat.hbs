@@ -20,41 +20,4 @@
   <button name="sendButton" type="submit" class="btn btn-primary">Отправить</button>
 </form>
 
-<!-- Шаблон сообщения из чата -->
-<template id="chat-message-template">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <style>
-    .container {
-      display: flex;
-    }
-
-    .avatar-container {
-      overflow: hidden;
-    }
-
-    ::slotted(img) {
-      width: 64px;
-      height: 64px;
-      margin: 1.25rem 0;
-      border-radius: 50%;
-    }
-  </style>
-  <div class="card mb-3">
-    <div class="container no-gutters">
-      <div class="avatar-container">
-        <slot name="avatar"></slot>
-      </div>
-      <div class="message-container">
-        <div class="card-body">
-          <h5 class="card-title">
-            <slot name="username"></slot>
-          </h5>
-          <p class="card-text">
-            <slot name="message"></slot>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
+{{> chat_message_template}}
